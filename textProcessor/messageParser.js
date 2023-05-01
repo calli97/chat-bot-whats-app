@@ -1,4 +1,5 @@
 import { getResponse } from "./responses.js";
+import { removeAccents } from "./utils.js";
 
 const tags = {
     greetings: ["hola", "como esta", "buen dia", "como va", "buenas"],
@@ -30,7 +31,7 @@ const getTags = (message) => {
 
 const checkTag = (message, tagValues) => {
     for (let i = 0; i < tagValues.length; i++) {
-        if (message.toLowerCase().includes(tagValues[i])) {
+        if (removeAccents(message.toLowerCase()).includes(tagValues[i])) {
             return true;
         }
     }
